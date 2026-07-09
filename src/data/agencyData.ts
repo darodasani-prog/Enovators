@@ -1,4 +1,12 @@
 import { Project, Service, Testimonial, BlogPost, PricingPlan, FAQItem, ProcessStep, ComparisonItem } from "../types";
+// @ts-ignore
+import dangogoHeroImg from "../assets/images/dangogo_hero_1783621829898.jpg";
+// @ts-ignore
+import rimontHeroImg from "../assets/images/rimont_hero_1783621843590.jpg";
+// @ts-ignore
+import diabeticHeroImg from "../assets/images/diabetic_hero_1783621855120.jpg";
+// @ts-ignore
+import bkFinanceHeroImg from "../assets/images/bk_finance_hero_1783621868270.jpg";
 
 export const SERVICES_DATA: Service[] = [
   {
@@ -115,7 +123,7 @@ export const PROJECTS_DATA: Project[] = [
     category: "Branding & Identity",
     clientName: "Fatima Dangogo",
     year: "2026",
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=1200&q=80",
+    image: dangogoHeroImg,
     bgColor: "bg-stone-900",
     textColor: "text-stone-100",
     accentColor: "from-amber-500 to-amber-700",
@@ -152,7 +160,7 @@ export const PROJECTS_DATA: Project[] = [
     category: "Business Websites",
     clientName: "Rimont Global Services",
     year: "2025",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80",
+    image: rimontHeroImg,
     bgColor: "bg-slate-950",
     textColor: "text-white",
     accentColor: "from-blue-600 to-indigo-600",
@@ -189,7 +197,7 @@ export const PROJECTS_DATA: Project[] = [
     category: "Landing Pages",
     clientName: "9ja Diabetic & Health Foundation",
     year: "2026",
-    image: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1200&q=80",
+    image: diabeticHeroImg,
     bgColor: "bg-teal-950",
     textColor: "text-white",
     accentColor: "from-emerald-400 to-teal-500",
@@ -226,7 +234,7 @@ export const PROJECTS_DATA: Project[] = [
     category: "Website Design",
     clientName: "BK Finance Group",
     year: "2026",
-    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
+    image: bkFinanceHeroImg,
     bgColor: "bg-slate-950",
     textColor: "text-white",
     accentColor: "from-indigo-500 to-violet-600",
