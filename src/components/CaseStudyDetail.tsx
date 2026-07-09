@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Project } from "../types";
-import { ArrowLeft, CheckCircle, ArrowRight, Share2, Clipboard, Heart } from "lucide-react";
+import { ArrowLeft, CheckCircle, ArrowRight, Share2, Clipboard, Heart, ExternalLink } from "lucide-react";
 
 interface CaseStudyDetailProps {
   project: Project;
@@ -52,6 +52,19 @@ export default function CaseStudyDetail({ project, onBack, setCurrentPage }: Cas
             <p className="text-slate-300 text-lg sm:text-xl font-sans font-light mt-2 max-w-2xl">
               {project.subtitle}
             </p>
+            {project.liveUrl && (
+              <div className="mt-6">
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center space-x-2 px-6 py-3 rounded-full bg-gradient-to-r from-brand-highlight to-brand-secondary text-slate-950 text-xs font-mono font-extrabold hover:brightness-110 transition-all shadow-lg cursor-pointer uppercase"
+                >
+                  <span>Explore Live Website</span>
+                  <ExternalLink className="w-4 h-4 text-slate-950" />
+                </a>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -72,8 +85,20 @@ export default function CaseStudyDetail({ project, onBack, setCurrentPage }: Cas
             <span className="text-sm font-semibold text-white mt-1 block">{project.category}</span>
           </div>
           <div className="text-left">
-            <span className="text-[10px] text-slate-500 font-mono tracking-widest uppercase block">PLATFORM STATUS</span>
-            <span className="text-sm font-mono text-emerald-400 mt-1 block">&bull; LIVE COMPLETED</span>
+            <span className="text-[10px] text-slate-500 font-mono tracking-widest uppercase block">PLATFORM URL</span>
+            {project.liveUrl ? (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-mono text-brand-highlight hover:underline mt-1.5 flex items-center space-x-1"
+              >
+                <span className="truncate max-w-[120px] sm:max-w-none inline-block">{project.liveUrl.replace(/^https?:\/\/(www\.)?/, "")}</span>
+                <ExternalLink className="w-3.5 h-3.5 text-brand-highlight shrink-0" />
+              </a>
+            ) : (
+              <span className="text-sm font-mono text-emerald-400 mt-1 block">&bull; LIVE COMPLETED</span>
+            )}
           </div>
         </div>
       </div>

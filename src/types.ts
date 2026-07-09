@@ -9,6 +9,7 @@ export interface Project {
   bgColor: string;
   textColor: string;
   accentColor: string;
+  liveUrl?: string;
   // Case Study Details
   challenge: string;
   solution: string;

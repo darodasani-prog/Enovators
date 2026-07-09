@@ -15,7 +15,7 @@ export default function PortfolioShowcase({ onSelectProject, setCurrentPage }: P
   const [isDragging, setIsDragging] = useState(false);
   const sliderContainerRef = useRef<HTMLDivElement>(null);
 
-  const categories = ["All", "E-commerce Stores", "Website Design", "Portfolio Websites"];
+  const categories = ["All", "Website Design", "Business Websites", "Landing Pages", "E-commerce Stores", "Branding & Identity", "Portfolio Websites"];
 
   const filteredProjects = activeCategory === "All"
     ? PROJECTS_DATA

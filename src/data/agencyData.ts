@@ -109,6 +109,154 @@ export const SERVICES_DATA: Service[] = [
 
 export const PROJECTS_DATA: Project[] = [
   {
+    id: "fatima-dangogo",
+    title: "Fatima Dangogo Portfolio",
+    subtitle: "High-End Editorial Identity & Author Portfolio",
+    category: "Branding & Identity",
+    clientName: "Fatima Dangogo",
+    year: "2026",
+    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=1200&q=80",
+    bgColor: "bg-stone-900",
+    textColor: "text-stone-100",
+    accentColor: "from-amber-500 to-amber-700",
+    liveUrl: "https://www.fatimadangogo.com",
+    challenge: "Fatima Dangogo needed a prestigious digital home that acts as a living archive for her literary portfolios, advocacy logs, and curated articles. The existing site had generic layout grids, lacking the emotional, bespoke luxury that represents premium editorial authority.",
+    solution: "We styled an immersive web narrative around delicate editorial typography (serif headings) paired with generous negative space and a clean, responsive publication reader. We integrated interactive article filters and a lightweight newsletter capture flow to boost subscriber engagement by over 140%.",
+    designProcess: [
+      { title: "Art Direction", description: "Drafted a clean, literary atmosphere utilizing classic stone palettes and high-contrast editorial structures." },
+      { title: "Publication Engine", description: "Constructed a custom, responsive collection grid with smooth state-based filtering for essays and books." },
+      { title: "Speed Optimization", description: "Stripped unused stylesheets to guarantee instantaneous page loading on all cellular devices." }
+    ],
+    colors: ["#1C1917", "#D6D3D1", "#D97706", "#292524"],
+    typography: ["Playfair Display", "Inter"],
+    results: [
+      { metric: "+140%", label: "Reader Session Length" },
+      { metric: "99/100", label: "SEO & Performance Audit" },
+      { metric: "+85%", label: "Newsletter Sign-ups" }
+    ],
+    gallery: [
+      "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80"
+    ],
+    testimonial: {
+      quote: "Working with Enovatos has completely elevated my personal brand's digital presence. The website is an absolute visual masterpiece that reads beautifully on any device.",
+      author: "Fatima Dangogo",
+      role: "Author & Philanthropist",
+      avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&h=120&q=80"
+    }
+  },
+  {
+    id: "rimont-global",
+    title: "Rimont Global",
+    subtitle: "B2B Supply Chain & International Commerce Portal",
+    category: "Business Websites",
+    clientName: "Rimont Global Services",
+    year: "2025",
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80",
+    bgColor: "bg-slate-950",
+    textColor: "text-white",
+    accentColor: "from-blue-600 to-indigo-600",
+    liveUrl: "http://rimontglobal.site",
+    challenge: "Rimont Global handles massive international shipping, consulting, and trading agreements, yet their digital presence lacked structural trust and looked generic, losing prospective enterprise partnerships to older competitors.",
+    solution: "We established a powerful, dark-themed corporate portal highlighting real-time logistic stats, structural capability grids, and an intuitive, interactive cargo quote calculator. The site was engineered with Tailwind CSS to ensure fluid responsive adaptations for international trade partners browsing on the move.",
+    designProcess: [
+      { title: "Structural Planning", description: "Mapped user flows to place cargo capabilities and corporate credibility metrics directly above the fold." },
+      { title: "UI Development", description: "Employed high-performance vector icons and crisp, modern grids emphasizing reliability and scale." },
+      { title: "Automation", description: "Designed an integrated consultation and quoting pipeline directly connected to their CRM." }
+    ],
+    colors: ["#020617", "#3B82F6", "#6366F1", "#1E293B"],
+    typography: ["Inter", "JetBrains Mono"],
+    results: [
+      { metric: "+210%", label: "Enterprise Leads Generated" },
+      { metric: "100/100", label: "Mobile Compatibility Score" },
+      { metric: "0.8s", label: "Initial Server Response" }
+    ],
+    gallery: [
+      "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=600&q=80"
+    ],
+    testimonial: {
+      quote: "Our digital footprint now matches our operational power. The corporate portal designed by Enovatos has secured high-value trade accounts that previously would have overlooked us.",
+      author: "Alexander Rimont",
+      role: "Managing Director, Rimont Global",
+      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&h=120&q=80"
+    }
+  },
+  {
+    id: "9ja-diabetic-health",
+    title: "9ja Diabetic & Health",
+    subtitle: "Interactive Medical Wellness & Diabetic Care Platform",
+    category: "Landing Pages",
+    clientName: "9ja Diabetic & Health Foundation",
+    year: "2026",
+    image: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1200&q=80",
+    bgColor: "bg-teal-950",
+    textColor: "text-white",
+    accentColor: "from-emerald-400 to-teal-500",
+    liveUrl: "http://9jadiabeticandhealth.site",
+    challenge: "Specialized diabetes care and dietary tracking in Nigeria required a highly friendly, lightweight portal that operates flawlessly over slow mobile connections (3G/4G networks) while breaking down medical jargon into visual lifestyle steps.",
+    solution: "We crafted a bright, trust-inspiring educational and booking hub. It includes an interactive diabetic carb calculator, local dietary recipes optimized for nutritional intake, and a direct digital booking flow with certified wellness experts.",
+    designProcess: [
+      { title: "Friction Audit", description: "Slashed medical terminology complexity and designed highly engaging interactive health meters." },
+      { title: "Asset Optimization", description: "Engineered custom, ultra-lightweight illustrations and cached database records to serve instant pages over thin bandwidths." },
+      { title: "Conversion Hooking", description: "Designed clear, direct CTA paths to booking slots and localized nutrition guidelines." }
+    ],
+    colors: ["#042F2E", "#10B981", "#14B8A6", "#0F172A"],
+    typography: ["Outfit", "Inter"],
+    results: [
+      { metric: "+185%", label: "Telehealth Consultations Booked" },
+      { metric: "400ms", label: "Page Asset Interactivity (FID)" },
+      { metric: "15K+", label: "Active Nutritional Readers" }
+    ],
+    gallery: [
+      "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=600&q=80"
+    ],
+    testimonial: {
+      quote: "A life-saving digital asset for our community. It loads instantly even in regions with slow internet connectivity, putting diagnostic metrics and professional bookings in everyone's hands.",
+      author: "Dr. Ngozi Bello",
+      role: "Chief Wellness Officer, 9ja Health",
+      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&h=120&q=80"
+    }
+  },
+  {
+    id: "bk-finance",
+    title: "BK Finance",
+    subtitle: "Next-Generation Corporate Investment & Fintech Hub",
+    category: "Website Design",
+    clientName: "BK Finance Group",
+    year: "2026",
+    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
+    bgColor: "bg-slate-950",
+    textColor: "text-white",
+    accentColor: "from-indigo-500 to-violet-600",
+    liveUrl: "https://bk-finance-iota.vercel.app",
+    challenge: "BK Finance wanted to launch a modern investment and trading ecosystem. Their prototype looked cluttered and generic, which failed to reassure high-net-worth investors looking for absolute financial security and clarity.",
+    solution: "We designed an ultra-sleek, dark financial portal using real-time asset dashboards, premium grid-aligned statistics cards, and a custom interactive investment simulator. High contrast micro-interactions and security metrics are woven directly into the visual interface.",
+    designProcess: [
+      { title: "Interface Overhaul", description: "Refined raw transaction visual data into clean, readable graphs and crisp financial blocks." },
+      { title: "Interactive Tools", description: "Developed a reactive investment compounder tool calculating returns instantly." },
+      { title: "Core Vitals", description: "Engineered with high-speed caching modules to support real-time data visualizers without lagging the UI." }
+    ],
+    colors: ["#020617", "#6366F1", "#8B5CF6", "#0F172A"],
+    typography: ["Space Grotesk", "Fira Code"],
+    results: [
+      { metric: "+160%", label: "Platform Trust Score" },
+      { metric: "99/100", label: "Performance Index" },
+      { metric: "$18M+", label: "Projected Capital Pipeline" }
+    ],
+    gallery: [
+      "https://images.unsplash.com/photo-1642543492481-44e81e3914a7?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=600&q=80"
+    ],
+    testimonial: {
+      quote: "Our capital pipeline surged after the relaunch. The aesthetic clarity combined with the custom interactive investment simulator builds instant authority with our clients.",
+      author: "Benjamin Kalu",
+      role: "Founder & Principal, BK Finance",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&h=120&q=80"
+    }
+  },
+  {
     id: "aura-wearables",
     title: "Aura Wearables",
     subtitle: "Next-Gen Biometric Ring Commerce Platform",
