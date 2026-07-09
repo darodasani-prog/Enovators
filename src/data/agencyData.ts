@@ -7,6 +7,10 @@ import rimontHeroImg from "../assets/images/rimont_hero_1783621843590.jpg";
 import diabeticHeroImg from "../assets/images/diabetic_hero_1783621855120.jpg";
 // @ts-ignore
 import bkFinanceHeroImg from "../assets/images/bk_finance_hero_1783621868270.jpg";
+// @ts-ignore
+import travelBeforeImg from "../assets/images/poor_travel_site_1783622361210.jpg";
+// @ts-ignore
+import travelAfterImg from "../assets/images/modern_travel_site_1783622374000.jpg";
 
 export const SERVICES_DATA: Service[] = [
   {
@@ -377,8 +381,8 @@ export const PROJECTS_DATA: Project[] = [
 export const BEFORE_AFTER_PROJECT: { beforeImg: string, afterImg: string, title: string, desc: string } = {
   title: "Outdated Travel Agent Portal Redesign",
   desc: "How we revamped an outdated travel directory from a slow, cluttered table layout into a fast, highly aesthetic immersive booking hub.",
-  beforeImg: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=40&auto=compress",
-  afterImg: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=800&q=80"
+  beforeImg: travelBeforeImg,
+  afterImg: travelAfterImg
 };
 
 export const COMPARISON_DATA: ComparisonItem[] = [
