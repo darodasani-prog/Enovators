@@ -20,6 +20,25 @@ import BookConsultation from "./pages/BookConsultation";
 import LegalPage from "./pages/LegalPage";
 import { Project } from "./types";
 
+const FOUR_OH_FOUR_PARTICLES = Array.from({ length: 35 }, (_, i) => {
+  const colors = [
+    "bg-brand-secondary/30",
+    "bg-brand-highlight/25",
+    "bg-brand-accent/30",
+    "bg-indigo-500/20",
+    "bg-emerald-500/20"
+  ];
+  return {
+    id: i,
+    size: Math.random() * 6 + 2, // 2px to 8px
+    left: Math.random() * 100,
+    top: Math.random() * 100,
+    color: colors[i % colors.length],
+    duration: Math.random() * 30 + 20, // 20s to 50s
+    delay: Math.random() * -30, // negative delay for immediate motion
+  };
+});
+
 export default function App() {
   const [currentPage, setCurrentPage] = useState<string>("home");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -33,7 +52,35 @@ export default function App() {
 
   // Dedicated interactive 404 page viewport
   const render404Page = () => (
-    <div id="404-viewport" className="min-h-screen bg-slate-950 text-white flex items-center justify-center p-6 grid-bg">
+    <div id="404-viewport" className="min-h-screen bg-slate-950 text-white flex items-center justify-center p-6 grid-bg relative overflow-hidden">
+      {/* Floating Particle Background Effect */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        {FOUR_OH_FOUR_PARTICLES.map((p) => (
+          <motion.div
+            key={p.id}
+            className={`absolute rounded-full blur-[1px] ${p.color}`}
+            style={{
+              width: p.size,
+              height: p.size,
+              left: `${p.left}%`,
+              top: `${p.top}%`,
+            }}
+            animate={{
+              y: [0, -80, 80, 0],
+              x: [0, 40, -40, 0],
+              scale: [1, 1.3, 0.8, 1],
+              opacity: [0.15, 0.55, 0.25, 0.15],
+            }}
+            transition={{
+              duration: p.duration,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: p.delay,
+            }}
+          />
+        ))}
+      </div>
+
       <div className="max-w-md text-center space-y-6 relative z-10">
         <motion.div
           animate={{ rotate: 360 }}
