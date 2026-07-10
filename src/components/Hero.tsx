@@ -1,6 +1,10 @@
 import { motion } from "motion/react";
 import { ArrowRight, Play, Sparkles, Star, Users, CheckCircle } from "lucide-react";
 import { useEffect, useState } from "react";
+// @ts-ignore
+import ecommerceHeroImg from "../assets/images/ecommerce_hero_mockup_1783667388370.jpg";
+// @ts-ignore
+import mobileHeroImg from "../assets/images/mobile_hero_mockup_1783667403302.jpg";
 
 interface HeroProps {
   setCurrentPage: (page: string) => void;
@@ -8,6 +12,7 @@ interface HeroProps {
 
 export default function Hero({ setCurrentPage }: HeroProps) {
   const [timeStr, setTimeStr] = useState("");
+  const [activeCard, setActiveCard] = useState(0); // 0 = e-commerce, 1 = dashboard, 2 = mobile
 
   useEffect(() => {
     const updateTime = () => {
@@ -25,6 +30,151 @@ export default function Hero({ setCurrentPage }: HeroProps) {
     const interval = setInterval(updateTime, 1000);
     return () => clearInterval(interval);
   }, []);
+
+  // Set up the automatic carousel cycle
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveCard((prev) => (prev + 1) % 3);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, []);
+
+  // Define position variants based on activeCard
+  const getEcommerceAnimation = () => {
+    if (activeCard === 0) {
+      // Front Focused
+      return {
+        y: 35,
+        x: 10,
+        scale: 1.05,
+        rotateY: -12,
+        rotateX: 8,
+        rotateZ: 0,
+        opacity: 1.0,
+        zIndex: 30,
+        filter: "brightness(105%)",
+      };
+    } else if (activeCard === 1) {
+      // Middle Receding
+      return {
+        y: -15,
+        x: -25,
+        scale: 0.88,
+        rotateY: -18,
+        rotateX: 12,
+        rotateZ: -2,
+        opacity: 0.8,
+        zIndex: 20,
+        filter: "brightness(80%)",
+      };
+    } else {
+      // Back background
+      return {
+        y: -65,
+        x: -45,
+        scale: 0.76,
+        rotateY: -24,
+        rotateX: 15,
+        rotateZ: -4,
+        opacity: 0.45,
+        zIndex: 10,
+        filter: "brightness(60%)",
+      };
+    }
+  };
+
+  const getDashboardAnimation = () => {
+    if (activeCard === 1) {
+      // Front Focused
+      return {
+        y: 20,
+        x: -10,
+        scale: 1.05,
+        rotateY: -6,
+        rotateX: 5,
+        rotateZ: 0,
+        opacity: 1.0,
+        zIndex: 30,
+        filter: "brightness(100%)",
+      };
+    } else if (activeCard === 2) {
+      // Middle Receding
+      return {
+        y: 55,
+        x: 15,
+        scale: 0.88,
+        rotateY: -12,
+        rotateX: 8,
+        rotateZ: 2,
+        opacity: 0.8,
+        zIndex: 20,
+        filter: "brightness(80%)",
+      };
+    } else {
+      // Back background
+      return {
+        y: 95,
+        x: 35,
+        scale: 0.76,
+        rotateY: -18,
+        rotateX: 12,
+        rotateZ: 4,
+        opacity: 0.45,
+        zIndex: 10,
+        filter: "brightness(60%)",
+      };
+    }
+  };
+
+  const getPhoneAnimation = () => {
+    if (activeCard === 2) {
+      // Front Focused
+      return {
+        y: 50,
+        x: 100,
+        rotateZ: 6,
+        rotateY: -8,
+        rotateX: 4,
+        scale: 1.15,
+        opacity: 1.0,
+        zIndex: 35,
+        filter: "brightness(105%)",
+      };
+    } else if (activeCard === 0) {
+      // Middle Receding
+      return {
+        y: 105,
+        x: 125,
+        rotateZ: 3,
+        rotateY: 4,
+        rotateX: 2,
+        scale: 0.96,
+        opacity: 0.85,
+        zIndex: 20,
+        filter: "brightness(80%)",
+      };
+    } else {
+      // Back background
+      return {
+        y: 145,
+        x: 145,
+        rotateZ: 1,
+        rotateY: 12,
+        rotateX: 1,
+        scale: 0.8,
+        opacity: 0.55,
+        zIndex: 10,
+        filter: "brightness(60%)",
+      };
+    }
+  };
+
+  const springTransition = {
+    type: "spring",
+    stiffness: 90,
+    damping: 18,
+    mass: 0.9
+  };
 
   return (
     <section id="hero-section" className="relative min-h-screen bg-slate-950 flex items-center pt-28 pb-20 overflow-hidden grid-bg">
@@ -141,18 +291,20 @@ export default function Hero({ setCurrentPage }: HeroProps) {
           </div>
 
           {/* Right Floating 3D Mockup */}
-          <div className="lg:col-span-5 relative mt-10 lg:mt-0 flex justify-center items-center">
+          <div className="lg:col-span-5 relative mt-10 lg:mt-0 flex flex-col justify-center items-center">
             
             {/* Visual Frame wrapper with Perspective */}
-            <div className="relative w-full max-w-[420px] aspect-[4/5] [perspective:1000px]">
+            <div className="relative w-full max-w-[420px] aspect-[4/5] [perspective:1000px] mb-8">
               
               {/* Back card - Aura Web Store Preview */}
               <motion.div
-                initial={{ opacity: 0, rotateY: 15, rotateX: 10, y: 40, x: -20 }}
-                animate={{ opacity: 1, rotateY: -15, rotateX: 10, y: 0, x: 0 }}
-                transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-                className="absolute top-[10%] left-[5%] w-[85%] aspect-[1.4] bg-slate-900 rounded-2xl shadow-2xl border border-white/10 overflow-hidden animate-float cursor-pointer group"
-                onClick={() => setCurrentPage("portfolio")}
+                animate={getEcommerceAnimation()}
+                transition={springTransition}
+                className="absolute top-[10%] left-[5%] w-[85%] aspect-[1.4] bg-slate-900 rounded-2xl shadow-2xl border border-white/10 overflow-hidden cursor-pointer group"
+                onClick={() => {
+                  setActiveCard(0);
+                  setCurrentPage("portfolio");
+                }}
               >
                 <div className="flex items-center justify-between px-4 py-2 bg-slate-950 border-b border-white/5">
                   <div className="flex space-x-1.5">
@@ -163,10 +315,10 @@ export default function Hero({ setCurrentPage }: HeroProps) {
                   <span className="text-[10px] text-slate-500 font-mono">aura-wearables.com</span>
                   <div className="w-3.5 h-3.5" />
                 </div>
-                <div className="relative h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style={{ backgroundImage: `url('https://images.unsplash.com/photo-1613987549866-256801a5b67a?auto=format&fit=crop&w=500&q=80')` }}>
+                <div className="relative h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style={{ backgroundImage: `url(${ecommerceHeroImg})` }}>
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent flex items-end p-4">
                     <div className="text-left">
-                      <span className="text-[8px] font-mono uppercase bg-cyan-400/20 text-cyan-400 px-1.5 py-0.5 rounded">E-commerce</span>
+                      <span className="text-[8px] font-mono uppercase bg-cyan-400/20 text-cyan-400 px-1.5 py-0.5 rounded font-bold">E-commerce</span>
                       <h4 className="text-xs font-bold text-white mt-1">Aura Biometric Rings</h4>
                     </div>
                   </div>
@@ -175,11 +327,13 @@ export default function Hero({ setCurrentPage }: HeroProps) {
 
               {/* Middle card - Zenith Enterprise SaaS */}
               <motion.div
-                initial={{ opacity: 0, rotateY: 20, y: 100, x: 20 }}
-                animate={{ opacity: 1, rotateY: -10, rotateX: 5, y: 70, x: 20 }}
-                transition={{ duration: 1.2, ease: "easeOut", delay: 0.4 }}
+                animate={getDashboardAnimation()}
+                transition={springTransition}
                 className="absolute top-[35%] left-[10%] w-[85%] aspect-[1.4] bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden cursor-pointer group"
-                onClick={() => setCurrentPage("portfolio")}
+                onClick={() => {
+                  setActiveCard(1);
+                  setCurrentPage("portfolio");
+                }}
               >
                 <div className="flex items-center justify-between px-4 py-2 bg-slate-50 border-b border-slate-200">
                   <div className="flex space-x-1.5">
@@ -193,7 +347,7 @@ export default function Hero({ setCurrentPage }: HeroProps) {
                 <div className="relative h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style={{ backgroundImage: `url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=500&q=80')` }}>
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent flex items-end p-4">
                     <div className="text-left">
-                      <span className="text-[8px] font-mono uppercase bg-blue-600/20 text-blue-400 px-1.5 py-0.5 rounded">Dashboard UI</span>
+                      <span className="text-[8px] font-mono uppercase bg-blue-600/20 text-blue-400 px-1.5 py-0.5 rounded font-bold">Dashboard UI</span>
                       <h4 className="text-xs font-bold text-white mt-1">Zenith CRM Marketing Platform</h4>
                     </div>
                   </div>
@@ -202,20 +356,22 @@ export default function Hero({ setCurrentPage }: HeroProps) {
 
               {/* Front Mobile Phone Mockup Overlay */}
               <motion.div
-                initial={{ opacity: 0, y: 120, rotateZ: -10 }}
-                animate={{ opacity: 1, y: 120, rotateZ: 5, x: 120 }}
-                transition={{ duration: 1.4, ease: "easeOut", delay: 0.6 }}
+                animate={getPhoneAnimation()}
+                transition={springTransition}
                 className="absolute top-[15%] left-0 w-[45%] aspect-[9/19] bg-slate-950 rounded-[30px] p-2 shadow-2xl border-4 border-slate-800 overflow-hidden cursor-pointer hidden sm:block"
-                onClick={() => setCurrentPage("portfolio")}
+                onClick={() => {
+                  setActiveCard(2);
+                  setCurrentPage("portfolio");
+                }}
               >
                 {/* Speaker notch */}
                 <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-14 h-4 bg-slate-900 rounded-full z-20 flex items-center justify-center">
                   <span className="w-6 h-1 bg-slate-800 rounded-full" />
                 </div>
                 <div className="relative h-full rounded-[22px] overflow-hidden bg-slate-900">
-                  <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&w=300&q=80')` }}>
+                  <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${mobileHeroImg})` }}>
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent flex flex-col justify-end p-3 text-left">
-                      <span className="text-[6px] font-mono uppercase bg-purple-500/30 text-purple-300 px-1.5 py-0.5 rounded self-start">Mobile UI</span>
+                      <span className="text-[6px] font-mono uppercase bg-purple-500/30 text-purple-300 px-1.5 py-0.5 rounded self-start font-bold">Mobile UI</span>
                       <h5 className="text-[9px] font-bold text-white mt-0.5 leading-tight">100% Fluid Adaptive Layouts</h5>
                     </div>
                   </div>
@@ -223,6 +379,31 @@ export default function Hero({ setCurrentPage }: HeroProps) {
               </motion.div>
 
             </div>
+
+            {/* Interactive Carousel Control Dots & Labels */}
+            <div className="flex justify-center items-center space-x-2 relative z-30 select-none mt-2">
+              {[
+                { label: "E-Commerce", index: 0, glow: "bg-cyan-500" },
+                { label: "Dashboard", index: 1, glow: "bg-indigo-500" },
+                { label: "Mobile App", index: 2, glow: "bg-purple-500" }
+              ].map((btn) => (
+                <button
+                  key={btn.index}
+                  onClick={() => setActiveCard(btn.index)}
+                  className={`px-3 py-1 rounded-full text-[10px] font-mono border transition-all duration-300 flex items-center space-x-1.5 cursor-pointer ${
+                    activeCard === btn.index
+                      ? "bg-white/10 text-white border-white/20 scale-105"
+                      : "bg-transparent text-slate-500 border-transparent hover:text-slate-300"
+                  }`}
+                >
+                  <span className={`w-1.5 h-1.5 rounded-full ${btn.glow} ${
+                    activeCard === btn.index ? "animate-pulse scale-110" : "opacity-45"
+                  }`} />
+                  <span>{btn.label}</span>
+                </button>
+              ))}
+            </div>
+
           </div>
 
         </div>
