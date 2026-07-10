@@ -1,6 +1,6 @@
 import { Project, Service, Testimonial, BlogPost, PricingPlan, FAQItem, ProcessStep, ComparisonItem } from "../types";
 // @ts-ignore
-import dangogoHeroImg from "../assets/images/dangogo_hero_1783621829898.jpg";
+import dangogoHeroImg from "../assets/images/dangogo_hero_real_1783667691515.jpg";
 // @ts-ignore
 import rimontHeroImg from "../assets/images/rimont_hero_1783621843590.jpg";
 // @ts-ignore
@@ -123,23 +123,23 @@ export const PROJECTS_DATA: Project[] = [
   {
     id: "fatima-dangogo",
     title: "Fatima Dangogo Portfolio",
-    subtitle: "High-End Editorial Identity & Author Portfolio",
+    subtitle: "Journalist, Media Strategist & Documentary Storyteller",
     category: "Branding & Identity",
     clientName: "Fatima Dangogo",
     year: "2026",
     image: dangogoHeroImg,
-    bgColor: "bg-stone-900",
-    textColor: "text-stone-100",
-    accentColor: "from-amber-500 to-amber-700",
+    bgColor: "bg-zinc-950",
+    textColor: "text-zinc-100",
+    accentColor: "from-emerald-500 to-emerald-700",
     liveUrl: "https://www.fatimadangogo.com",
-    challenge: "Fatima Dangogo needed a prestigious digital home that acts as a living archive for her literary portfolios, advocacy logs, and curated articles. The existing site had generic layout grids, lacking the emotional, bespoke luxury that represents premium editorial authority.",
-    solution: "We styled an immersive web narrative around delicate editorial typography (serif headings) paired with generous negative space and a clean, responsive publication reader. We integrated interactive article filters and a lightweight newsletter capture flow to boost subscriber engagement by over 140%.",
+    challenge: "Fatima Dangogo needed a prestigious, high-end digital home that acts as a living archive for her journalism portfolios, documentary filmmaking logs, and curated PR articles. The space had to embody her mission of amplifying voices while maintaining premium editorial authority and an eye-safe, dark atmosphere.",
+    solution: "We engineered an immersive digital narrative surrounding bold, historic-feeling serif typography paired with dark documentary photography and a vibrant emerald accent scheme. We integrated custom multi-category publication filters and frictionless video-journalism embedding to increase reader average session duration by 140%.",
     designProcess: [
-      { title: "Art Direction", description: "Drafted a clean, literary atmosphere utilizing classic stone palettes and high-contrast editorial structures." },
-      { title: "Publication Engine", description: "Constructed a custom, responsive collection grid with smooth state-based filtering for essays and books." },
+      { title: "Art Direction", description: "Drafted an atmospheric documentary aesthetic utilizing dark stone palettes and high-contrast emerald structures." },
+      { title: "Publication Engine", description: "Constructed a custom, responsive collection grid with smooth state-based filtering for essays, films, and journals." },
       { title: "Speed Optimization", description: "Stripped unused stylesheets to guarantee instantaneous page loading on all cellular devices." }
     ],
-    colors: ["#1C1917", "#D6D3D1", "#D97706", "#292524"],
+    colors: ["#09090B", "#10B981", "#D1D5DB", "#18181B"],
     typography: ["Playfair Display", "Inter"],
     results: [
       { metric: "+140%", label: "Reader Session Length" },
@@ -153,7 +153,7 @@ export const PROJECTS_DATA: Project[] = [
     testimonial: {
       quote: "Working with Enovatos has completely elevated my personal brand's digital presence. The website is an absolute visual masterpiece that reads beautifully on any device.",
       author: "Fatima Dangogo",
-      role: "Author & Philanthropist",
+      role: "Journalist & Storyteller",
       avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&h=120&q=80"
     }
   },
