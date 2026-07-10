@@ -29,7 +29,7 @@ export default function StatsSection() {
   }, []);
 
   return (
-    <section id="stats-section" className="py-20 bg-slate-950 text-white relative overflow-hidden">
+    <section id="stats-section" className="py-20 bg-slate-100 dark:bg-slate-950 text-slate-900 dark:text-white relative overflow-hidden transition-colors duration-300">
       {/* Mesh lines overlay */}
       <div className="absolute inset-0 bg-grid-lines opacity-10" />
 
@@ -39,13 +39,13 @@ export default function StatsSection() {
             <div
               key={index}
               id={`stat-box-${index}`}
-              className="text-center space-y-2 border-r border-white/5 last:border-r-0 pb-6 md:pb-0"
+              className="text-center space-y-2 border-r border-slate-200 dark:border-white/5 last:border-r-0 pb-6 md:pb-0"
             >
               <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-mono text-transparent bg-clip-text bg-gradient-to-r from-brand-highlight via-brand-secondary to-brand-accent">
                 {counts[index]}
                 {stat.suffix}
               </div>
-              <p className="text-xs sm:text-sm text-slate-400 font-sans font-light tracking-wide px-2 uppercase font-display">
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-sans font-light tracking-wide px-2 uppercase font-display">
                 {stat.label}
               </p>
             </div>
