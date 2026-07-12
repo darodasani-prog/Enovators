@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Calendar as CalendarIcon, Clock, Users, ArrowRight, CheckCircle2, ChevronRight, User, Mail, Globe, CalendarDays } from "lucide-react";
+import { addBooking, submitToExternalProvider } from "../utils/submissions";
 
 interface BookConsultationProps {
   setCurrentPage: (page: string) => void;
@@ -45,15 +46,46 @@ export default function BookConsultation({ setCurrentPage }: BookConsultationPro
     "04:30 PM"
   ];
 
-  const handleBooking = (e: React.FormEvent) => {
+  const [externalError, setExternalError] = useState<string | null>(null);
+
+  const handleBooking = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedDate || !selectedTime) return;
     
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setExternalError(null);
+
+    // 1. Save booking in local storage
+    addBooking({
+      date: selectedDate,
+      time: selectedTime,
+      plan: selectedPlan,
+      name: formData.name,
+      email: formData.email,
+      website: formData.website,
+      notes: formData.notes
+    });
+
+    // 2. Submit to external configured provider (Formspree, Web3Forms, etc.)
+    const res = await submitToExternalProvider({
+      type: "Booking Consultation",
+      name: formData.name,
+      email: formData.email,
+      date: selectedDate,
+      time: selectedTime,
+      plan: selectedPlan || "General Consultation",
+      website: formData.website || "Not provided",
+      notes: formData.notes || "None"
+    });
+
+    setIsSubmitting(false);
+    if (res.success) {
       setIsBooked(true);
-    }, 1500);
+    } else {
+      setExternalError(res.error || "Failed to submit to active provider.");
+      // We still transition to Success state to ensure optimal UX, but let them know if there's a configuration issue
+      setIsBooked(true);
+    }
   };
 
   return (
@@ -105,6 +137,16 @@ export default function BookConsultation({ setCurrentPage }: BookConsultationPro
               </div>
             </div>
 
+            {externalError && (
+              <div className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-2xl text-left text-xs font-sans text-amber-200">
+                <p className="font-semibold flex items-center gap-1.5 mb-1 text-amber-400">
+                  <span>⚠️ External Integration Alert</span>
+                </p>
+                <p className="font-light leading-relaxed">{externalError}</p>
+                <p className="mt-1 font-mono text-[10px] text-slate-500">The lead was still saved successfully in your visual Lead & Booking Console.</p>
+              </div>
+            )}
+
             <div className="pt-4 flex flex-col sm:flex-row justify-center gap-3">
               <button
                 onClick={() => {
@@ -114,6 +156,16 @@ export default function BookConsultation({ setCurrentPage }: BookConsultationPro
                 className="px-6 py-3 rounded-full bg-gradient-to-r from-brand-secondary to-brand-accent hover:from-brand-accent hover:to-brand-highlight text-white text-xs font-mono font-bold tracking-wider transition-all duration-300 cursor-pointer"
               >
                 RETURN HOME PORTFOLIO
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setCurrentPage("leads-admin");
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                className="px-6 py-3 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 text-brand-highlight text-xs font-mono font-bold tracking-wider transition-all duration-300 cursor-pointer"
+              >
+                VIEW LIVE LEAD CONSOLE
               </button>
             </div>
           </div>

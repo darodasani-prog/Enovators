@@ -24,13 +24,13 @@ export default function PricingSection({ setCurrentPage }: PricingSectionProps) 
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
           <span className="text-xs font-mono font-bold uppercase tracking-widest text-brand-secondary bg-blue-50 px-3 py-1 rounded-full border border-blue-100">
-            TRANSPARENT VALUE
+            BESPOKE VALUE
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 tracking-tight">
-            Predictable Pricing, Elite Execution
+            Bespoke Packages, Elite Execution
           </h2>
           <p className="text-slate-500 font-sans font-light text-base sm:text-lg">
-            No bloated agency retainers. Get state-of-the-art custom engineering backed by absolute performance guarantees and direct communication.
+            No bloated agency retainers. Get state-of-the-art custom engineering tailored precisely to your project scope, backed by absolute guarantees.
           </p>
         </div>
 
@@ -67,13 +67,8 @@ export default function PricingSection({ setCurrentPage }: PricingSectionProps) 
                   <p className="text-xs text-slate-400 font-sans leading-relaxed">{plan.description}</p>
                 </div>
 
-                {/* Pricing amount */}
-                <div className="text-left border-y border-slate-100 py-5">
-                  <div className="flex items-baseline text-slate-900">
-                    <span className="text-4xl sm:text-5xl font-extrabold font-display tracking-tight">{plan.price}</span>
-                    <span className="text-xs font-mono text-slate-400 ml-1">/ {plan.period}</span>
-                  </div>
-                </div>
+                {/* Decorative Divider */}
+                <div className="border-t border-slate-150 dark:border-slate-800" />
 
                 {/* Feature Checklists */}
                 <ul className="space-y-3.5 text-left text-xs sm:text-sm">

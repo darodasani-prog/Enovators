@@ -18,6 +18,7 @@ import AboutPage from "./pages/AboutPage";
 import BlogPage from "./pages/BlogPage";
 import BookConsultation from "./pages/BookConsultation";
 import LegalPage from "./pages/LegalPage";
+import LeadsAdminPage from "./pages/LeadsAdminPage";
 import { Project } from "./types";
 
 const FOUR_OH_FOUR_PARTICLES = Array.from({ length: 35 }, (_, i) => {
@@ -154,7 +155,7 @@ export default function App() {
                       <Testimonials />
                       <PricingSection setCurrentPage={setCurrentPage} />
                       <FAQSection />
-                      <ContactSection />
+                      <ContactSection setCurrentPage={setCurrentPage} />
                     </div>
                   );
                 case "about":
@@ -193,11 +194,13 @@ export default function App() {
                 case "contact":
                   return (
                     <div id="contact-deep-view" className="pt-12">
-                      <ContactSection />
+                      <ContactSection setCurrentPage={setCurrentPage} />
                     </div>
                   );
                 case "book-consultation":
                   return <BookConsultation setCurrentPage={setCurrentPage} />;
+                case "leads-admin":
+                  return <LeadsAdminPage setCurrentPage={setCurrentPage} />;
                 case "privacy":
                   return <LegalPage initialTab="privacy" />;
                 case "terms":

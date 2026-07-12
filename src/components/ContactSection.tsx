@@ -1,7 +1,12 @@
 import React, { useState } from "react";
-import { Mail, Phone, MessageSquare, Send, CheckCircle, ExternalLink, Sparkles, MapPin } from "lucide-react";
+import { Mail, Phone, MessageSquare, Send, CheckCircle, ExternalLink, Sparkles, MapPin, Settings } from "lucide-react";
+import { addInquiry, submitToExternalProvider } from "../utils/submissions";
 
-export default function ContactSection() {
+interface ContactSectionProps {
+  setCurrentPage?: (page: string) => void;
+}
+
+export default function ContactSection({ setCurrentPage }: ContactSectionProps = {}) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -11,6 +16,7 @@ export default function ContactSection() {
   const [selectedNeeds, setSelectedNeeds] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [externalError, setExternalError] = useState<string | null>(null);
 
   const capabilities = [
     "Website Design",
@@ -28,18 +34,45 @@ export default function ContactSection() {
     );
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setExternalError(null);
     
-    // Simulate API transport
+    // 1. Store the inquiry locally
+    addInquiry({
+      name: formData.name,
+      email: formData.email,
+      company: formData.company,
+      message: formData.message,
+      needs: selectedNeeds
+    });
+
+    // 2. Submit to external configured provider
+    const res = await submitToExternalProvider({
+      type: "Contact Form Inquiry",
+      name: formData.name,
+      email: formData.email,
+      company: formData.company || "Not provided",
+      needs: selectedNeeds.join(", ") || "General Inquiry",
+      message: formData.message
+    });
+
+    setIsSubmitting(false);
+    setIsSuccess(true);
+    
+    if (!res.success) {
+      setExternalError(res.error || "External dispatch failed.");
+    }
+
+    setFormData({ name: "", email: "", company: "", message: "" });
+    setSelectedNeeds([]);
+    
+    // Clear notifications after some time
     setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSuccess(true);
-      setFormData({ name: "", email: "", company: "", message: "" });
-      setSelectedNeeds([]);
-      setTimeout(() => setIsSuccess(false), 5000);
-    }, 1500);
+      setIsSuccess(false);
+      setExternalError(null);
+    }, 10000);
   };
 
   return (
@@ -149,9 +182,32 @@ export default function ContactSection() {
 
               {/* Success state */}
               {isSuccess && (
-                <div className="p-4 bg-emerald-50 border border-emerald-100 rounded-xl flex items-center space-x-3 text-emerald-800 text-xs sm:text-sm font-sans">
-                  <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" />
-                  <span>✓ Inquiry compiled! We will review your goals and schedule within 4 working hours.</span>
+                <div className="p-4 bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/30 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-emerald-800 dark:text-emerald-300 text-xs sm:text-sm font-sans">
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" />
+                    <span>✓ Inquiry compiled! We will review your goals within 4 working hours.</span>
+                  </div>
+                  {setCurrentPage && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setCurrentPage("leads-admin");
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      }}
+                      className="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400 hover:underline cursor-pointer flex items-center space-x-1 shrink-0 bg-emerald-100/50 dark:bg-emerald-900/40 px-2.5 py-1 rounded-md"
+                    >
+                      <span>VIEW LEAD CONSOLE</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </button>
+                  )}
+                </div>
+              )}
+
+              {isSuccess && externalError && (
+                <div className="p-4 bg-amber-50 border border-amber-100 dark:bg-amber-950/10 dark:border-amber-900/20 rounded-xl text-left text-xs font-sans text-amber-800 dark:text-amber-300">
+                  <p className="font-semibold mb-0.5">⚠️ External dispatch alert:</p>
+                  <p className="font-light">{externalError}</p>
+                  <p className="mt-1 font-mono text-[10px] text-slate-400">The lead was still recorded securely in your local Lead & Booking Console.</p>
                 </div>
               )}
 
