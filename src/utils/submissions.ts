@@ -33,11 +33,11 @@ export interface IntegrationConfig {
 const SUBMISSIONS_KEY = "enovatos-studio-submissions";
 const CONFIG_KEY = "enovatos-studio-integration-config";
 
-// Default configuration pre-configured with the user's Formspree Form ID
+// Default configuration pre-configured with the user's active keys
 const DEFAULT_CONFIG: IntegrationConfig = {
-  provider: "formspree",
+  provider: "web3forms",
   formspreeId: "mwvgkegr",
-  web3formsKey: "",
+  web3formsKey: "81f11303-8d6e-40d9-a0ca-61ea38137591",
 };
 
 // Helper to get configuration
