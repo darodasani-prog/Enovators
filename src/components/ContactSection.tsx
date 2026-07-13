@@ -228,7 +228,7 @@ export default function ContactSection({ setCurrentPage }: ContactSectionProps =
                 
                 {/* Email link */}
                 <a
-                  href="mailto:hello@enovatos.com"
+                  href="mailto:darodasani@gmail.com"
                   className="flex items-center space-x-4 p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 transition-all"
                 >
                   <div className="w-10 h-10 rounded-lg bg-blue-500/15 text-brand-highlight flex items-center justify-center">
@@ -236,13 +236,13 @@ export default function ContactSection({ setCurrentPage }: ContactSectionProps =
                   </div>
                   <div>
                     <span className="text-[10px] text-slate-400 font-mono tracking-wider block">EMAIL US</span>
-                    <span className="text-sm font-semibold block">hello@enovatos.com</span>
+                    <span className="text-sm font-semibold block">darodasani@gmail.com</span>
                   </div>
                 </a>
 
                 {/* Phone link */}
                 <a
-                  href="tel:+18005550143"
+                  href="tel:+2349132812642"
                   className="flex items-center space-x-4 p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 transition-all"
                 >
                   <div className="w-10 h-10 rounded-lg bg-purple-500/15 text-brand-highlight flex items-center justify-center">
@@ -250,13 +250,13 @@ export default function ContactSection({ setCurrentPage }: ContactSectionProps =
                   </div>
                   <div>
                     <span className="text-[10px] text-slate-400 font-mono tracking-wider block">CALL DIRECTLY</span>
-                    <span className="text-sm font-semibold block">+1 (800) 555-0143</span>
+                    <span className="text-sm font-semibold block">+234 913 281 2642</span>
                   </div>
                 </a>
 
                 {/* WhatsApp click */}
                 <a
-                  href="https://wa.me/18005550143"
+                  href="https://wa.me/2349132812642"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-between p-3 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/15 border border-emerald-500/20 text-emerald-400 transition-all"

@@ -174,9 +174,9 @@ export default function Footer({ setCurrentPage, setSelectedProjectId }: FooterP
             <button onClick={() => handleNavigate("terms")} className="hover:text-white transition-colors">
               Terms & Conditions
             </button>
-            <a href="mailto:hello@enovatos.com" className="hover:text-white transition-colors flex items-center space-x-1">
+            <a href="mailto:darodasani@gmail.com" className="hover:text-white transition-colors flex items-center space-x-1">
               <Mail className="w-3 h-3" />
-              <span>hello@enovatos.com</span>
+              <span>darodasani@gmail.com</span>
             </a>
           </div>
         </div>
