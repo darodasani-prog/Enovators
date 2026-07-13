@@ -11,7 +11,6 @@ import PortfolioShowcase from "./components/PortfolioShowcase";
 import CaseStudyDetail from "./components/CaseStudyDetail";
 import ProcessTimeline from "./components/ProcessTimeline";
 import Testimonials from "./components/Testimonials";
-import PricingSection from "./components/PricingSection";
 import FAQSection from "./components/FAQSection";
 import ContactSection from "./components/ContactSection";
 import AboutPage from "./pages/AboutPage";
@@ -153,7 +152,6 @@ export default function App() {
                       />
                       <ProcessTimeline />
                       <Testimonials />
-                      <PricingSection setCurrentPage={setCurrentPage} />
                       <FAQSection />
                       <ContactSection setCurrentPage={setCurrentPage} />
                     </div>
@@ -176,13 +174,7 @@ export default function App() {
                       />
                     </div>
                   );
-                case "pricing":
-                  return (
-                    <div id="pricing-deep-view" className="pt-12">
-                      <PricingSection setCurrentPage={setCurrentPage} />
-                      <WhyChooseUs />
-                    </div>
-                  );
+
                 case "blog":
                   return <BlogPage />;
                 case "faq":

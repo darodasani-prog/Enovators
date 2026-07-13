@@ -31,7 +31,6 @@ export default function Navbar({ currentPage, setCurrentPage, setSelectedProject
     { id: "about", label: "About" },
     { id: "services", label: "Services" },
     { id: "portfolio", label: "Portfolio" },
-    { id: "pricing", label: "Pricing" },
     { id: "blog", label: "Blog" },
     { id: "faq", label: "FAQ" },
     { id: "contact", label: "Contact" }

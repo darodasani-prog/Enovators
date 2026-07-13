@@ -85,18 +85,8 @@ export default function Footer({ setCurrentPage, setSelectedProjectId }: FooterP
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNavigate("pricing")} className="hover:text-brand-highlight transition-colors text-left">
-                  Bespoke Packages
-                </button>
-              </li>
-              <li>
                 <button onClick={() => handleNavigate("blog")} className="hover:text-brand-highlight transition-colors text-left">
                   Insights & Blog
-                </button>
-              </li>
-              <li className="pt-1.5">
-                <button onClick={() => handleNavigate("leads-admin")} className="text-brand-highlight hover:text-white transition-colors text-left flex items-center space-x-1 font-mono text-[11px] font-bold tracking-widest uppercase bg-white/5 border border-white/10 rounded px-2 py-1">
-                  <span>✦ Lead Console</span>
                 </button>
               </li>
             </ul>

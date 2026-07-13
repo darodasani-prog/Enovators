@@ -9,7 +9,6 @@ interface BookConsultationProps {
 export default function BookConsultation({ setCurrentPage }: BookConsultationProps) {
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
-  const [selectedPlan, setSelectedPlan] = useState<string>("");
   
   const [formData, setFormData] = useState({
     name: "",
@@ -21,13 +20,10 @@ export default function BookConsultation({ setCurrentPage }: BookConsultationPro
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isBooked, setIsBooked] = useState(false);
 
-  // Retrieve any plan selected in the pricing page
+  // No plans or packages selected anymore
   useEffect(() => {
-    const savedPlan = sessionStorage.getItem("requestedPlan");
-    if (savedPlan) {
-      setSelectedPlan(savedPlan);
-      sessionStorage.removeItem("requestedPlan"); // clean up
-    }
+    // Session storage key requestedPlan clean up if left over
+    sessionStorage.removeItem("requestedPlan");
   }, []);
 
   const dates = [
@@ -59,7 +55,7 @@ export default function BookConsultation({ setCurrentPage }: BookConsultationPro
     addBooking({
       date: selectedDate,
       time: selectedTime,
-      plan: selectedPlan,
+      plan: "Strategic Consultation",
       name: formData.name,
       email: formData.email,
       website: formData.website,
@@ -73,7 +69,7 @@ export default function BookConsultation({ setCurrentPage }: BookConsultationPro
       email: formData.email,
       date: selectedDate,
       time: selectedTime,
-      plan: selectedPlan || "General Consultation",
+      plan: "Strategic Consultation",
       website: formData.website || "Not provided",
       notes: formData.notes || "None"
     });
@@ -129,10 +125,10 @@ export default function BookConsultation({ setCurrentPage }: BookConsultationPro
                 </span>
               </div>
               <div className="space-y-1">
-                <span className="text-slate-500 block">TARGET STRATEGY</span>
+                <span className="text-slate-500 block">MEETING TYPE</span>
                 <span className="text-white font-semibold flex items-center space-x-1.5">
                   <Clock className="w-3.5 h-3.5 text-brand-accent" />
-                  <span>{selectedPlan || "General Consultation"} Plan Audit</span>
+                  <span>Strategic Consultation Session</span>
                 </span>
               </div>
             </div>
@@ -143,7 +139,7 @@ export default function BookConsultation({ setCurrentPage }: BookConsultationPro
                   <span>⚠️ External Integration Alert</span>
                 </p>
                 <p className="font-light leading-relaxed">{externalError}</p>
-                <p className="mt-1 font-mono text-[10px] text-slate-500">The lead was still saved successfully in your visual Lead & Booking Console.</p>
+                <p className="mt-1 font-mono text-[10px] text-slate-500">The booking details have been registered on your local browser cache.</p>
               </div>
             )}
 
@@ -156,16 +152,6 @@ export default function BookConsultation({ setCurrentPage }: BookConsultationPro
                 className="px-6 py-3 rounded-full bg-gradient-to-r from-brand-secondary to-brand-accent hover:from-brand-accent hover:to-brand-highlight text-white text-xs font-mono font-bold tracking-wider transition-all duration-300 cursor-pointer"
               >
                 RETURN HOME PORTFOLIO
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  setCurrentPage("leads-admin");
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
-                className="px-6 py-3 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 text-brand-highlight text-xs font-mono font-bold tracking-wider transition-all duration-300 cursor-pointer"
-              >
-                VIEW LIVE LEAD CONSOLE
               </button>
             </div>
           </div>
@@ -249,22 +235,8 @@ export default function BookConsultation({ setCurrentPage }: BookConsultationPro
                 )}
               </div>
 
-              {/* Package selector sync */}
-              <div className="border-t border-white/5 pt-6 text-left space-y-3">
-                <label className="text-xs font-mono font-bold text-slate-400 uppercase tracking-widest block">
-                  3. Associated Pricing Package (Optional)
-                </label>
-                <select
-                  value={selectedPlan}
-                  onChange={(e) => setSelectedPlan(e.target.value)}
-                  className="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-3 text-xs text-slate-300 focus:outline-none focus:border-brand-secondary transition-colors cursor-pointer"
-                >
-                  <option value="">General Custom Consultation (Free)</option>
-                  <option value="Starter Applet">Starter Applet ($3,499)</option>
-                  <option value="Growth Professional">Growth Professional ($6,899)</option>
-                  <option value="Enterprise Authority">Enterprise Authority ($12,499)</option>
-                </select>
-              </div>
+              {/* Bottom space */}
+              <div className="pt-2"></div>
 
             </div>
 

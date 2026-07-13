@@ -187,19 +187,6 @@ export default function ContactSection({ setCurrentPage }: ContactSectionProps =
                     <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" />
                     <span>✓ Inquiry compiled! We will review your goals within 4 working hours.</span>
                   </div>
-                  {setCurrentPage && (
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setCurrentPage("leads-admin");
-                        window.scrollTo({ top: 0, behavior: "smooth" });
-                      }}
-                      className="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400 hover:underline cursor-pointer flex items-center space-x-1 shrink-0 bg-emerald-100/50 dark:bg-emerald-900/40 px-2.5 py-1 rounded-md"
-                    >
-                      <span>VIEW LEAD CONSOLE</span>
-                      <ExternalLink className="w-3 h-3" />
-                    </button>
-                  )}
                 </div>
               )}
 
@@ -207,7 +194,7 @@ export default function ContactSection({ setCurrentPage }: ContactSectionProps =
                 <div className="p-4 bg-amber-50 border border-amber-100 dark:bg-amber-950/10 dark:border-amber-900/20 rounded-xl text-left text-xs font-sans text-amber-800 dark:text-amber-300">
                   <p className="font-semibold mb-0.5">⚠️ External dispatch alert:</p>
                   <p className="font-light">{externalError}</p>
-                  <p className="mt-1 font-mono text-[10px] text-slate-400">The lead was still recorded securely in your local Lead & Booking Console.</p>
+                  <p className="mt-1 font-mono text-[10px] text-slate-400">The lead was still recorded securely on your local browser cache.</p>
                 </div>
               )}
 
